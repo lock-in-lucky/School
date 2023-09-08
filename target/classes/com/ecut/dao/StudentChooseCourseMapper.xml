@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ecut.dao.StudentChooseCourseMapper">
+    <select id="getCourseByLimit" parameterType="map" resultType="Course">
+        select * from course
+        limit #{start},#{size}
+    </select>
+
+    <select id="selectCount" resultType="int">
+        select count(*) from course
+    </select>
+
+    <insert id="insertCourse" parameterType="Score">
+        insert into score(course_id,student_id) values(#{courseId},#{studentId})
+    </insert>
+
+    <select id="existsScore" parameterType="Score" resultType="Score">
+        select * from score
+        where course_id=#{courseId} and student_id=#{studentId}
+    </select>
+    <delete id="delScore" parameterType="Score">
+        delete from score
+        where course_id=#{courseId} and student_id=#{studentId}
+    </delete>
+
+</mapper>

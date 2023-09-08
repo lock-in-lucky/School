@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ecut.dao.ClassesMapper" >
+
+    <insert id="addClasses" parameterType="Classes">
+        insert into classes values(#{classId},#{className},#{classTeacherId},#{classTeacherName})
+    </insert>
+
+    <delete id="deleteClassesById" parameterType="string">
+        delete from classes where class_id=#{id}
+    </delete>
+
+    <select id="queryClassesById" resultType="Classes" parameterType="string">
+        select * from classes where class_id=#{id}
+    </select>
+    <update id="updateClasses" parameterType="Classes">
+        update classes set class_name=#{className},class_teacher_id=#{classTeacherId},
+        class_teacher_name=#{classTeacherName} where class_id=#{classId}
+    </update>
+    <update id="updateClassesByMap" parameterType="map">
+        update classes set class_name=#{className},
+                            class_id=#{classId} where class_id=#{id}
+    </update>
+
+    <select id="getClassess" resultType="Classes">
+        select * from classes
+    </select>
+
+    <select id="selectCount" resultType="int">
+        select count(*) from classes
+    </select>
+    <select id="selectCountByTeacherId" resultType="int" parameterType="string">
+        select count(*) from classes where class_teacher_id=#{teacherId}
+    </select>
+
+    <select id="findByPage" parameterType="map" resultType="Classes">
+        select * from classes
+        limit #{start},#{size}
+    </select>
+    <select id="selectForClasses" parameterType="ClassesSmall" resultType="Classes">
+        select * from classes
+        <where>
+            <if test="classId!=null and classId!=''">
+                class_id=#{classId}
+            </if>
+            <if test="classTeacherName!=null and classTeacherName!=''">
+               and class_teacher_name=#{classTeacherName}
+            </if>
+        </where>
+    </select>
+</mapper>

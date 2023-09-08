@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ecut.dao.StudentCourseMapper" >
+
+    <select id="getCourseById" resultType="Course">
+        select * from `course`
+        where course_id in (select course_id from score where student_id=#{id})
+    </select>
+
+
+    <select id="selectCount" resultType="int">
+        select count(*) from `course`
+        where course_id in (select course_id from score where student_id=#{studentId})
+    </select>
+
+    <select id="findByPage" resultType="Course" parameterType="map">
+        select * from `course`
+        where course_id in (select course_id from score where student_id=#{studentId})
+        limit #{start},#{size}
+    </select>
+
+
+
+</mapper>

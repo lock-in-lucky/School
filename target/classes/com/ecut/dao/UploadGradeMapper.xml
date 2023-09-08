@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ecut.dao.UploadGradeMapper">
+    <select id="getCourseByCourseId" resultMap="CourseScore" parameterType="string">
+        select stu.student_name studentName,stu.student_gender studentGender,stu.student_id studentId,stu.student_class_id studentClassId,c.course_id course_id,c.course_name course_name,c.course_teacher courseTeacher
+        from student stu,score sco,course c
+        where stu.student_id=sco.student_id and sco.course_id=c.course_id and c.course_id=#{courseId}
+    </select>
+    <resultMap id="CourseScore"  type="Course">
+        <result property="courseId" column="course_id"/>
+        <result property="courseName" column="course_name"/>
+        <result property="courseTeacher" column="courseTeacher"/>
+
+        <!--一对多-->
+        <collection property="students" ofType="Student" javaType="java.util.List">
+            <result property="studentName" column="studentName"/>
+            <result property="studentId" column="studentId"/>
+            <result property="studentGender" column="studentGender"/>
+            <result property="studentClassId" column="studentClassId"/>
+        </collection>
+    </resultMap>
+
+    <update id="addMoreScore" parameterType="map">
+        <foreach collection="lists" item="list" separator="">
+
+        update score
+        set
+            score.score = #{list.score}
+        where
+              score.course_id=#{list.courseId} and score.student_id=#{list.studentId};
+          </foreach>
+    </update>
+</mapper>

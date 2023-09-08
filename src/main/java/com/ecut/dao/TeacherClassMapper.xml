@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ecut.dao.TeacherClassMapper">
+
+
+    <select id="getStudentsByTeacherId" parameterType="string" resultType="Student">
+        select * from student
+        where
+        student_class_id = (select class_id from classes WHERE class_teacher_id=#{teacherId})
+    </select>
+
+    <select id="getClasses" resultType="Classes" parameterType="string">
+        select * from classes where class_teacher_id=#{teacherId}
+    </select>
+</mapper>

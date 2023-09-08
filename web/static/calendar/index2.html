@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+
+    
+    <script type="text/javascript" src="js/dcalendar.picker.js"></script>
+    <script type="text/javascript">
+        $('#mydatepicker').dcalendarpicker();
+        $('#mydatepicker2').dcalendarpicker({
+            format: 'yyyy-mm-dd'
+        });
+        $('#mycalendar').dcalendar();
+    </script>
+
+    <script src="../../js/bootstrap.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap335.css" />
+    <link rel="stylesheet" type="text/css" href="css/zzsc.css">
+    <link rel="stylesheet" href="css/dcalendar.picker.css" />
+
+    <title>index2</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary mb-2">
+        <a class="navbar-brand mr-auto text-white" href="#">首页</a>
+
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-primary border-0 my-2 my-sm-0 text-white mr-2"
+                type="submit">欢迎您，admin</button>
+            <button class="btn btn-outline-primary border-0 my-2 my-sm-0 text-white" type="submit"><a
+                    href="../webapp/login.html" class="text-white" style="text-decoration: none;">退出</a></button>
+        </form>
+    </nav>
+
+    <div class="row">
+        <!-- 左侧边导航栏 -->
+        <div class="col-2">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-index-list" data-toggle="list"
+                    href="#list-index" role="tab" aria-controls="index">首页</a>
+
+                <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list"
+                    href="#list-home" role="tab" aria-controls="home">
+                    <span class="glyphicon glyphicon-home"></span>教师管理</a>
+
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                    href="#list-profile" role="tab" aria-controls="profile">学生管理</a>
+
+                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
+                    href="#list-messages" role="tab" aria-controls="messages">课程管理</a>
+
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                    href="#list-settings" role="tab" aria-controls="settings">班级管理</a>
+            </div>
+        </div>
+        <!-- 右侧内容部分 -->
+        <div class="col-10">
+
+            <div class="tab-content" id="nav-tabContent">
+                <!-- 首页开始 -->
+                <div class="tab-pane fade show active" id="list-index" role="tabpanel"
+                    aria-labelledby="list-index-list">
+
+
+                    <div class="zzsc-container">
+                        <div class="date">
+                            <h3>Calendar</h3>
+                            <table id='mycalendar' class='calendar'></table>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 首页结束 -->
+
+                <!-- 教师管理部分开始 -->
+                <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active"><a href="#">首页</a></li>
+                            <li class="breadcrumb-item" aria-current="page">教师管理</li>
+                        </ol>
+                    </nav>
+
+
+                    <div class="card">
+                        <div class="card-header">
+                            搜索
+                        </div>
+                        <div class="card-body">
+                            <form role="form" class="form-inline">
+                                <div class="form-group">
+                                    <label for="name">姓名</label>
+                                    <input type="text" class="form-control mx-2" id="name" placeholder="请输入名称"
+                                        required />
+                                </div>
+                                <div class="form-group mr-3">
+                                    <label for="deph">院系</label>
+                                    <select class="form-control mx-2" id="deph">
+                                        <option>软件学院</option>
+                                        <option>信工学院</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mr-auto">
+                                    <button type="submit" class="btn btn-primary">查询</button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal" data-whatever="@mdo">添加</button>
+                                </div>
+                            </form>
+                            <!-- 弹框内容 -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">添加教师</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="row" id="form">
+                                                <div class="form-group col-12">
+                                                    <label for="recipient-name" class="col-form-label">姓名</label>
+                                                    <input type="text" class="form-control" id="recipient-name"
+                                                        required>
+                                                </div>
+                                                <div class="form-group col-6">
+                                                    <label for="recipient-num" class="col-form-label">电话号码</label>
+                                                    <input type="text" class="form-control" id="recipient-num" required>
+                                                </div>
+                                                <div class="form-group col-6">
+                                                    <label for="recipient-email" class="col-form-label">电子邮件</label>
+                                                    <input type="text" class="form-control" id="recipient-email"
+                                                        required>
+                                                </div>
+                                                <div class="form-group col-6">
+                                                    <label for="recipient-year" class="col-form-label">年份</label>
+                                                    <select class="form-control" id="recipient-year">
+                                                        <option>2019</option>
+                                                        <option>2020</option>
+                                                        <option selected>2021</option>
+                                                        <option>2022</option>
+                                                        <option>2023</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-6">
+                                                    <label for="deph11" class="col-form-label">院系</label>
+                                                    <select class="form-control" id="deph11">
+                                                        <option>软件学院</option>
+                                                        <option>信工学院</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="reset" class="btn btn-secondary" form="form">重置</button>
+                                            <button type="button" class="btn btn-primary "
+                                                data-dismiss="modal">提交</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>教师工号</th>
+                                    <th>教师姓名</th>
+                                    <th>电话号码</th>
+                                    <th>电子邮箱</th>
+                                    <th>院系</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>15</td>
+                                    <td>张三</td>
+                                    <td>10086</td>
+                                    <td>3258968039@qq.com</td>
+                                    <td>软件学院</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-light" data-toggle="modal"
+                                                data-target="#exampleModal11">修改</button>
+                                            <a href="" class="btn btn-danger">删除</a>
+
+                                            <div class="modal fade" id="exampleModal11" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel11" aria-hidden="true">
+                                                <div class="modal-dialog  modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel11">修改教师信息</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="row" id="form11">
+                                                                <div class="form-group col-12">
+                                                                    <label for="recipient-name11"
+                                                                        class="col-form-label">姓名</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="recipient-name11" required>
+                                                                </div>
+                                                                <div class="form-group col-6">
+                                                                    <label for="recipient-num11"
+                                                                        class="col-form-label">电话号码</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="recipient-num11" required>
+                                                                </div>
+                                                                <div class="form-group col-6">
+                                                                    <label for="recipient-email11"
+                                                                        class="col-form-label">电子邮件</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="recipient-email11" required>
+                                                                </div>
+                                                                <div class="form-group col-6">
+                                                                    <label for="recipient-year11"
+                                                                        class="col-form-label">年份</label>
+                                                                    <select class="form-control" id="recipient-year11">
+                                                                        <option>2019</option>
+                                                                        <option>2020</option>
+                                                                        <option selected>2021</option>
+                                                                        <option>2022</option>
+                                                                        <option>2023</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-6">
+                                                                    <label for="recipient-deph11"
+                                                                        class="col-form-label">院系</label>
+                                                                    <select class="form-control" id="recipient-deph11">
+                                                                        <option>软件学院</option>
+                                                                        <option>信工学院</option>
+                                                                    </select>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="reset" class="btn btn-secondary"
+                                                                form="form11">重置</button>
+                                                            <button type="button" class="btn btn-primary "
+                                                                data-dismiss="modal">提交</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <button type="button" class="btn btn-light"><a href="#">&laquo;</a></button>
+                            <button type="button" class="btn btn-light">1</button>
+                            <button type="button" class="btn btn-light">2</button>
+                            <button type="button" class="btn btn-light">3</button>
+                            <button type="button" class="btn btn-light">4</button>
+                            <button type="button" class="btn btn-light"><a href="#">&raquo;</a></button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 教师管理部分结束 -->
+                <!-- 学生管理部分开始-->
+                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="panel panel-default">
+
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active"><a href="#">首页</a></li>
+                                <li class="breadcrumb-item" aria-current="page">学生管理</li>
+                            </ol>
+                        </nav>
+
+                        <div class="card">
+                            <div class="card-header">
+                                搜索
+                            </div>
+
+                            <div class="card-body">
+                                <form role="form" class="form-inline">
+                                    <div class="form-group">
+                                        <label for="name2">姓名</label>
+                                        <input type="text" class="form-control mx-2" id="name2" placeholder="请输入名称" />
+                                    </div>
+                                    <div class="form-group mr-3">
+                                        <label for="deph2">院系</label>
+                                        <select class="form-control mx-2" id="deph2">
+                                            <option>软件学院</option>
+                                            <option>信工学院</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mr-auto">
+                                        <button type="submit" class="btn btn-primary">查询</button>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#exampleModal2" data-whatever="@mdo">添加</button>
+                                    </div>
+                                </form>
+                                <!-- 弹框内容 -->
+                                <div class="modal fade" id="exampleModal2" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel2">添加学生</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="row" id="form2">
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-name2" class="col-form-label">姓名</label>
+                                                        <input type="text" class="form-control" id="recipient-name2">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-class2" class="col-form-label">班级</label>
+                                                        <input type="text" class="form-control" id="recipient-class2">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-num2" class="col-form-label">电话号码</label>
+                                                        <input type="text" class="form-control" id="recipient-num2">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-email2"
+                                                            class="col-form-label">电子邮件</label>
+                                                        <input type="text" class="form-control" id="recipient-email2">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-year2" class="col-form-label">年份</label>
+                                                        <select class="form-control" id="recipient-year2">
+                                                            <option>2019</option>
+                                                            <option>2020</option>
+                                                            <option selected>2021</option>
+                                                            <option>2022</option>
+                                                            <option>2023</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-address2"
+                                                            class="col-form-label">生源地</label>
+                                                        <input type="text" class="form-control" id="recipient-address2">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="reset" class="btn btn-secondary" form="form2">重置</button>
+                                                <button type="button" class="btn btn-primary "
+                                                    data-dismiss="modal">提交</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>学号</th>
+                                        <th>学生姓名</th>
+                                        <th>班级</th>
+                                        <th>手机号码</th>
+                                        <th>邮箱</th>
+                                        <th>生源地</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2019213103</td>
+                                        <td>李四</td>
+                                        <td>1921801</td>
+                                        <td>110</td>
+                                        <td>123456@</td>
+                                        <td>南昌</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-light" data-toggle="modal"
+                                                    data-target="#exampleModal22">修改</button>
+                                                <a href="" class="btn btn-danger">删除</a>
+
+                                                <div class="modal fade" id="exampleModal22" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel22" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel22">修改学生信息
+                                                                </h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form class="row" id="form22">
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-name22"
+                                                                            class="col-form-label">姓名</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="recipient-name22">
+                                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-class22"
+                                                                            class="col-form-label">班级</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="recipient-class22">
+                                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-num22"
+                                                                            class="col-form-label">电话号码</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="recipient-num22">
+                                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-email22"
+                                                                            class="col-form-label">电子邮件</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="recipient-email22">
+                                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-year22"
+                                                                            class="col-form-label">年份</label>
+                                                                        <select class="form-control"
+                                                                            id="recipient-year22">
+                                                                            <option>2019</option>
+                                                                            <option>2020</option>
+                                                                            <option selected>2021</option>
+                                                                            <option>2022</option>
+                                                                            <option>2023</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-address22"
+                                                                            class="col-form-label">生源地</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="recipient-address22">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="reset" class="btn btn-secondary"
+                                                                    form="form22">重置</button>
+                                                                <button type="button" class="btn btn-primary "
+                                                                    data-dismiss="modal">提交</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-light"><a href="#">&laquo;</a></button>
+                                <button type="button" class="btn btn-light">1</button>
+                                <button type="button" class="btn btn-light">2</button>
+                                <button type="button" class="btn btn-light">3</button>
+                                <button type="button" class="btn btn-light">4</button>
+                                <button type="button" class="btn btn-light"><a href="#">&raquo;</a></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- 学生管理部分结束-->
+                <!-- 课程管理部分开始-->
+                <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                    <div class="panel panel-default">
+
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active"><a href="#">首页</a></li>
+                                <li class="breadcrumb-item" aria-current="page">课程管理</li>
+                            </ol>
+                        </nav>
+                        <div class="card">
+                            <div class="card-header">
+                                搜索
+                            </div>
+
+                            <div class="card-body">
+                                <form role="form" class="form-inline">
+                                    <div class="form-group">
+                                        <label for="name3">课程名</label>
+                                        <input type="text" class="form-control mx-2" id="name3" placeholder="请输入名称" />
+                                    </div>
+                                    <div class="form-group mr-3">
+                                        <label for="deph3">任课教师</label>
+                                        <input type="text" class="form-control mx-2" id="deph3" placeholder="请输入教师姓名" />
+                                    </div>
+                                    <div class="form-group mr-auto">
+                                        <button type="submit" class="btn btn-primary">查询</button>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#exampleModal3" data-whatever="@mdo">添加</button>
+                                    </div>
+                                </form>
+                                <!-- 弹框内容 -->
+                                <div class="modal fade" id="exampleModal3" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel3">添加课程</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="row" id="form3">
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-name3" class="col-form-label">课程名</label>
+                                                        <input type="text" class="form-control" id="recipient-name3">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-year3" class="col-form-label">任课教师</label>
+                                                        <input type="text" class="form-control" id="recipient-year3">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-year3" class="col-form-label">年份</label>
+                                                        <select class="form-control" id="recipient-year3">
+                                                            <option>2019</option>
+                                                            <option>2020</option>
+                                                            <option selected>2021</option>
+                                                            <option>2022</option>
+                                                            <option>2023</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-num3" class="col-form-label">所属学期</label>
+                                                        <select class="form-control" id="recipient-num3">
+                                                            <option selected>全部</option>
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                            <option>6</option>
+                                                            <option>7</option>
+                                                            <option>8</option>
+                                                        </select>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="reset" class="btn btn-secondary" form="form3">重置</button>
+                                                <button type="button" class="btn btn-primary "
+                                                    data-dismiss="modal">提交</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>课程号</th>
+                                        <th>课程名</th>
+                                        <th>任课教师</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1001</td>
+                                        <td>软件体系结构</td>
+                                        <td>张朝锋</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-light" data-toggle="modal"
+                                                    data-target="#exampleModal33">修改</button>
+                                                <a href="" class="btn btn-danger">删除</a>
+
+                                                <div class="modal fade" id="exampleModal33" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel33" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel33">修改课程信息
+                                                                </h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form class="row" id="form33">
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-name33"
+                                                                            class="col-form-label">课程名</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="recipient-name33">
+                                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-year33"
+                                                                            class="col-form-label">任课教师</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="recipient-year33">
+                                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-year33"
+                                                                            class="col-form-label">年份</label>
+                                                                        <select class="form-control"
+                                                                            id="recipient-year33">
+                                                                            <option>2019</option>
+                                                                            <option>2020</option>
+                                                                            <option selected>2021</option>
+                                                                            <option>2022</option>
+                                                                            <option>2023</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-num33"
+                                                                            class="col-form-label">所属学期</label>
+                                                                        <select class="form-control"
+                                                                            id="recipient-num33">
+                                                                            <option selected>全部</option>
+                                                                            <option>1</option>
+                                                                            <option>2</option>
+                                                                            <option>3</option>
+                                                                            <option>4</option>
+                                                                            <option>5</option>
+                                                                            <option>6</option>
+                                                                            <option>7</option>
+                                                                            <option>8</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="reset" class="btn btn-secondary"
+                                                                    form="form33">重置</button>
+                                                                <button type="button" class="btn btn-primary "
+                                                                    data-dismiss="modal">提交</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-light"><a href="#">&laquo;</a></button>
+                                <button type="button" class="btn btn-light">1</button>
+                                <button type="button" class="btn btn-light">2</button>
+                                <button type="button" class="btn btn-light">3</button>
+                                <button type="button" class="btn btn-light">4</button>
+                                <button type="button" class="btn btn-light"><a href="#">&raquo;</a></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- 课程管理部分结束-->
+                <!-- 班级管理部分开始-->
+                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                    <div class="panel panel-default">
+
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active"><a href="#">首页</a></li>
+                                <li class="breadcrumb-item" aria-current="page">班级管理</li>
+                            </ol>
+                        </nav>
+
+                        <div class="card">
+                            <div class="card-header">
+                                搜索
+                            </div>
+
+                            <div class="card-body">
+                                <form role="form" class="form-inline">
+                                    <div class="form-group">
+                                        <label for="name4">班级号</label>
+                                        <input type="text" class="form-control mx-2" id="name4" placeholder="请输入班级号" />
+                                    </div>
+                                    <div class="form-group mr-3">
+                                        <label for="deph4">班主任</label>
+                                        <input type="text" class="form-control mx-2" id="deph4"
+                                            placeholder="请输入班主任姓名" />
+                                    </div>
+                                    <div class="form-group mr-auto">
+                                        <button type="submit" class="btn btn-primary">查询</button>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#exampleModal4" data-whatever="@mdo">添加</button>
+                                    </div>
+                                </form>
+                                <!-- 弹框内容 -->
+                                <div class="modal fade" id="exampleModal4" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel4">添加班级</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="row" id="form4">
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-name4" class="col-form-label">班级名称</label>
+                                                        <input type="text" class="form-control" id="recipient-name4">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-year4" class="col-form-label">年份</label>
+                                                        <select class="form-control" id="recipient-year4">
+                                                            <option>2019</option>
+                                                            <option>2020</option>
+                                                            <option selected>2021</option>
+                                                            <option>2022</option>
+                                                            <option>2023</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-num4" class="col-form-label">班主任姓名</label>
+                                                        <input type="text" class="form-control" id="recipient-num4">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="recipient-email4"
+                                                            class="col-form-label">班主任工号</label>
+                                                        <input type="text" class="form-control" id="recipient-email4">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="reset" class="btn btn-secondary" form="form4">重置</button>
+                                                <button type="button" class="btn btn-primary "
+                                                    data-dismiss="modal">提交</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>班级号</th>
+                                        <th>班级名称</th>
+                                        <th>学生数量</th>
+                                        <th>班主任</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1921801Z</td>
+                                        <td>卓越班</td>
+                                        <td>19</td>
+                                        <td>魏振华</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-light" data-toggle="modal"
+                                                    data-target="#exampleModal44">修改</button>
+                                                <a href="" class="btn btn-danger">删除</a>
+
+                                                <div class="modal fade" id="exampleModal44" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel44" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel44">修改班级信息
+                                                                </h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form class="row" id="form44">
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-name44"
+                                                                            class="col-form-label">班级名称</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="recipient-name44">
+                                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-year44"
+                                                                            class="col-form-label">年份</label>
+                                                                        <select class="form-control"
+                                                                            id="recipient-year44">
+                                                                            <option>2019</option>
+                                                                            <option>2020</option>
+                                                                            <option selected>2021</option>
+                                                                            <option>2022</option>
+                                                                            <option>2023</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-num44"
+                                                                            class="col-form-label">班主任姓名</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="recipient-num44">
+                                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="recipient-email44"
+                                                                            class="col-form-label">班主任工号</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="recipient-email44">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="reset" class="btn btn-secondary"
+                                                                    form="form44">重置</button>
+                                                                <button type="button" class="btn btn-primary "
+                                                                    data-dismiss="modal">提交</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-light"><a href="#">&laquo;</a></button>
+                                <button type="button" class="btn btn-light">1</button>
+                                <button type="button" class="btn btn-light">2</button>
+                                <button type="button" class="btn btn-light">3</button>
+                                <button type="button" class="btn btn-light">4</button>
+                                <button type="button" class="btn btn-light"><a href="#">&raquo;</a></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- 班级管理部分结束-->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

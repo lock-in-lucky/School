@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ecut.dao.JobsMapper">
+
+    <select id="getJobs" resultType="Jobs">
+        select * from jobs order by rand() LIMIT 1
+    </select>
+
+
+    <select id="getJobsRandom" resultType="Jobs">
+        select * from jobs order by rand() LIMIT 5
+    </select>
+
+    <select id="getJobsById" parameterType="int" resultType="Jobs">
+        select * from jobs where id=#{id}
+    </select>
+</mapper>

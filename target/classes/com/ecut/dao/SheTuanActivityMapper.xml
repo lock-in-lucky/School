@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ecut.dao.SheTuanActivityMapper">
+
+    <select id="getActivity" resultType="SheTuanActivity">
+        select * from shetuanactivity order by rand() LIMIT 1
+    </select>
+
+    <select id="getActivityByTime" resultType="SheTuanActivity">
+        select * from shetuanactivity where activity_time>now()
+    </select>
+
+    <select id="getActivityById" parameterType="int" resultType="SheTuanActivity">
+        select * from shetuanactivity where id=#{id}
+    </select>
+</mapper>
